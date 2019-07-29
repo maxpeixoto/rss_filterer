@@ -1,6 +1,6 @@
 class KeywordReader:
-    file="keywords.txt"
+    _file = "keywords.txt"
     @staticmethod
     def read():
-        with open(KeywordReader.file) as keywords:
+        with open(KeywordReader._file) as keywords:
             return [word.strip() for word in keywords.read().split('\n') if word]
