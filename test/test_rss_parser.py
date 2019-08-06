@@ -1,16 +1,21 @@
-import pytest
+from link import Link
 from rss_parser import RssParser
 
-def test_rss_is_list():
-    rss = 'http://g1.globo.com/dynamo/rss2.xml'
-    parser = RssParser(rss)
-    assert type(parser._rss) is list
-    assert len(parser._rss) > 5
-    assert type(parser._rss[0]) is str
-    assert len(parser._rss[0]) > 5
 
-def test_links_is_list():
+class TestRssParser:
     rss = 'http://g1.globo.com/dynamo/rss2.xml'
-    parser = RssParser(rss)
-    links = parser.get_links()
-    assert type(links) is list
+
+    def test_get_links(self):
+        parser = RssParser(TestRssParser.rss)
+        links = parser.get_links()
+        assert type(links) is list
+        assert len(links) > 5
+        assert type(links[0]) is Link
+        assert len(parser._rss.entries) == len(links)
+
+    def test_rss(self):
+        rss = RssParser(TestRssParser.rss)._rss
+        assert len(rss) > 5
+        for entry in rss.entries:
+            assert type(entry.link) is str
+            assert len(entry.link) > 5
