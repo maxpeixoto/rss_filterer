@@ -1,4 +1,4 @@
-from link import Link
+from page_reference import PageReference
 from rss_parser import RssParser
 
 
@@ -7,10 +7,10 @@ class TestRssParser:
 
     def test_get_links(self):
         parser = RssParser(TestRssParser.rss)
-        links = parser.get_links()
+        links = parser.get_pages()
         assert type(links) is list
         assert len(links) > 5
-        assert type(links[0]) is Link
+        assert type(links[0]) is PageReference
         assert len(parser._rss.entries) == len(links)
 
     def test_rss(self):
