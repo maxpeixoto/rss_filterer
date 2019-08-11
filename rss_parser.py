@@ -1,11 +1,11 @@
 import feedparser
 
-from link import Link
+from page_reference import PageReference
 
 
 class RssParser:
     def __init__(self, rss):
         self._rss = feedparser.parse(rss)
 
-    def get_links(self):
-        return [Link(i) for i in self._rss.entries]
+    def get_pages(self):
+        return [PageReference(i) for i in self._rss.entries]
