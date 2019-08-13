@@ -1,11 +1,11 @@
 import pytest
 
-from link_filter import LinkFilter
-from link_filterer import PageFilterer
+from page_filter import PageFilter
+from page_filterer import PageFilterer
 from page_reference import PageReference
 
 
-class TestLinkFilterer:
+class TestPageFilterer:
 
     @pytest.fixture(autouse=True)
     def before_all(self):
@@ -25,6 +25,7 @@ class TestLinkFilterer:
                                    'url': 'https://s2.glbimg.com/Sa_5gZQwHm4C0WaSykMbS9opp2Y=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/D/e/Sj6EmTTTAX6nr7BI1OVw/whatsapp-image-2019-08-05-at-22.48.05.jpeg',
                                    'medium': 'image'}], 'tags': [{'term': 'G1', 'scheme': None, 'label': None}],
              'published': 'Tue, 06 Aug 2019 03:55:42 -0000'},
+
             {'title': 'Mega-Sena pode pagar R$ 32 milhões nesta terça',
              'title_detail': {'type': 'text/plain', 'language': None, 'base': 'https://g1.globo.com/rss/g1/',
                               'value': 'Mega-Sena pode pagar R$ 32 milhões nesta terça'}, 'links': [
@@ -40,6 +41,7 @@ class TestLinkFilterer:
                                    'url': 'https://s2.glbimg.com/JC6Olrj3y5Bw8noSiAj8fabOVT0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/H/i/BjMFSLTd68zGX2TBtUag/volantes-loterias-q98a7776-credito-marcelo-brandt-g1.jpg',
                                    'medium': 'image'}], 'tags': [{'term': 'G1', 'scheme': None, 'label': None}],
              'published': 'Tue, 06 Aug 2019 03:01:02 -0000'},
+
             {'title': 'Preço médio dos imóveis residenciais já caiu mais de 2% em 2019, diz FipeZap',
              'title_detail': {'type': 'text/plain', 'language': None, 'base': 'https://g1.globo.com/rss/g1/',
                               'value': 'Preço médio dos imóveis residenciais já caiu mais de 2% em 2019, diz FipeZap'},
@@ -55,21 +57,25 @@ class TestLinkFilterer:
                                    'url': 'https://s2.glbimg.com/p0pCS_nXRujAg9WX-ZdMhWMNhd4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/B/N/zzYvVNT2uPtMRbcvcfbA/img-3033.jpg',
                                    'medium': 'image'}], 'tags': [{'term': 'G1', 'scheme': None, 'label': None}],
              'published': 'Tue, 06 Aug 2019 03:00:02 -0000'}]
-        pages = [PageReference(i) for i in feedparser_dict]
-        self.filterer = PageFilterer(pages)
+
+        self.pages = [PageReference(i) for i in feedparser_dict]
+
+        self.rss = 'http://g1.globo.com/dynamo/rss2.xml'
+        self.filterer = PageFilterer(self.rss)
 
     def test_init(self):
         assert type(self.filterer) is PageFilterer
-        assert len(self.filterer._pages) == 3
+        assert self.filterer._rss == self.rss
 
     def test_filter_list(self):
         assert type(self.filterer._filters) is list
         assert len(self.filterer._filters) > 0
         for f in self.filterer._filters:
-            assert isinstance(f, LinkFilter)
+            assert isinstance(f, PageFilter)
 
-    def test_apply_filter(self):
-        pages = self.filterer.filter_pages_parallel()
+    def test_filter_page_parallel(self):
+        assert len(self.pages) == 3
+        pages = self.filterer.filter_pages_parallel(self.pages)
         assert len(pages) == 2
         links = [page.link for page in pages]
         assert 'https://g1.globo.com/economia/noticia/2019/08/06/preco-medio-dos-imoveis-residenciais-ja-caiu-mais-de-2percent-em-2019-diz-fipezap.ghtml' in links

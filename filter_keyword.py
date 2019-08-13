@@ -1,10 +1,10 @@
 import urllib.request
 
 from keyword_reader import KeywordReader
-from link_filter import LinkFilter
+from page_filter import PageFilter
 
 
-class FilterKeyword(LinkFilter):
+class FilterKeyword(PageFilter):
     def __init__(self):
         self._keywords = KeywordReader.read()
 
@@ -13,7 +13,12 @@ class FilterKeyword(LinkFilter):
 
     def _has_keyword(self, link):
         content = self._get_page_content(link)
-        return any(word in content for word in self._keywords)
+        for word in self._keywords:
+            if word in content:
+                return word
+        return False
 
     def filter(self, page):
-        return self._has_keyword(page.link)
+        keyword = self._has_keyword(page.link)
+        page.add('keyword', keyword)
+        return keyword

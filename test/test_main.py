@@ -1,4 +1,4 @@
-from link_filterer import PageFilterer
+from page_filterer import PageFilterer
 from rss_parser import RssParser
 from telegram_bot import TelegramBot
 
@@ -9,6 +9,6 @@ class TestMain:
     def test_full(self):
         pages = RssParser(TestMain.rss).get_pages()
         total = len(pages)
-        pages = PageFilterer(pages).filter_pages_parallel()
+        pages = PageFilterer(TestMain.rss).filter_pages_parallel(pages)
         assert 0 < len(pages) < total
         TelegramBot.send("Encontrados %d links" % len(pages))

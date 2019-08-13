@@ -7,8 +7,8 @@ from filter_keyword import FilterKeyword
 
 
 class PageFilterer:
-    def __init__(self, pages):
-        self._pages = pages
+    def __init__(self, rss):
+        self._rss = rss
         self._filters = [
             # FilterRepeated(), # TODO descomentar
             FilterKeyword()
@@ -20,10 +20,10 @@ class PageFilterer:
                 return
         filtered_list.append(page)
 
-    def filter_pages_parallel(self):
+    def filter_pages_parallel(self, pages):
         filtered = []
         thread_list = []
-        for page in self._pages:
+        for page in pages:
             t = Thread(target=self._filter_page_thread, args=(page, filtered))
             t.start()
             thread_list.append(t)

@@ -29,3 +29,9 @@ class TestPageReference:
         assert page.a == 1
         assert page.b == 2
         assert page.c == "xyz"
+
+    def test_add_type(self):
+        d = {"a": 1, "b": 2, "c": "xyz"}
+        page = PageReference(d)
+        page.add("new_type", "new_val")
+        assert page.new_type == "new_val"
