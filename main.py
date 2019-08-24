@@ -8,7 +8,6 @@ if __name__ == "__main__":
     try:
         while True:
             for rss in RssList.get():
-                TelegramBot.send('links vindos de ' + rss)
                 logging.debug("rss: %s" % rss)
                 RssFilterer(rss).filter().send_links()
     except Exception as e:
