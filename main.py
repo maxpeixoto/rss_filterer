@@ -6,10 +6,11 @@ from telegram_bot import TelegramBot
 
 if __name__ == "__main__":
     try:
-        TelegramBot.send('Levando testes mais a serio')
-        for rss in RssList.get():
-            logging.debug("rss: %s" % rss)
-            RssFilterer(rss).filter().send_links()
+        while True:
+            for rss in RssList.get():
+                TelegramBot.send('links vindos de ' + rss)
+                logging.debug("rss: %s" % rss)
+                RssFilterer(rss).filter().send_links()
     except Exception as e:
         TelegramBot.send('Erro fatal. Parei de mandar links por causa disso: %s' % str(e))
         """"

@@ -16,3 +16,4 @@ Gerdau
 GOAU4
 JHSF3
 WEGE3
+Paulo

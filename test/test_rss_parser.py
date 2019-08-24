@@ -7,11 +7,11 @@ class TestRssParser:
 
     def test_get_links(self):
         parser = RssParser(TestRssParser.rss)
-        links = parser.get_pages()
-        assert type(links) is list
-        assert len(links) > 5
-        assert type(links[0]) is PageReference
-        assert len(parser._rss.entries) == len(links)
+        pages = parser.get_pages()
+        assert type(pages) is list
+        assert len(pages) > 5
+        assert type(pages[0]) is PageReference
+        assert len(parser._rss.entries) == len(pages)
 
     def test_rss(self):
         rss = RssParser(TestRssParser.rss)._rss

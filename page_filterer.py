@@ -1,17 +1,17 @@
 from threading import Thread
 
 from filter_keyword import FilterKeyword
-
-
-# from filter_timestamp import FilterTimestamp
+from filter_never_sent import FilterNeverSent
+from rss_configuration import RssConfiguration
 
 
 class PageFilterer:
     def __init__(self, rss):
         self._rss = rss
+        config = RssConfiguration(rss)
         self._filters = [
-            # FilterRepeated(), # TODO descomentar
-            FilterKeyword()
+            FilterKeyword(),
+            FilterNeverSent(config)
         ]
 
     def _filter_page_thread(self, page, filtered_list):
@@ -19,6 +19,7 @@ class PageFilterer:
             if not f.filter(page):
                 return
         filtered_list.append(page)
+        pass
 
     def filter_pages_parallel(self, pages):
         filtered = []
