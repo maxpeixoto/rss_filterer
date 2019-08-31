@@ -1,3 +1,5 @@
+import pytest
+
 from src.page_filterer import PageFilterer
 from src.rss_parser import RssParser
 from src.telegram_bot import TelegramBot
@@ -6,6 +8,8 @@ from src.telegram_bot import TelegramBot
 class TestMain:
     rss = 'http://g1.globo.com/dynamo/rss2.xml'
 
+    # TODO test is unreliable. Depends on current content
+    @pytest.mark.skip
     def test_full(self):
         pages = RssParser(TestMain.rss).get_pages()
         total = len(pages)

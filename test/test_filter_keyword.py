@@ -39,8 +39,8 @@ class TestFilterKeyword:
         assert len(page) is not 0
 
     def test_has_keyword(self):
-        match = self.filter._has_keyword("http://instantrimshot.com/")
-        assert match == "Instant rimsho"
+        match = self.filter._has_keyword("some Instant rimshot test")
+        assert match == "nstant rimsho"
 
     def test_no_keyword(self):
         match = self.filter._has_keyword("http://pudim.com.br")

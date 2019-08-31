@@ -12,15 +12,18 @@ class TestPageFilterer:
         feedparser_dict = [
             {
                 'link': 'https://g1.globo.com/ce/ceara/noticia/2019/08/06/grupo-e-preso-com-arma-e-municao-apos-bater-carro-durante-perseguicao-na-grande-fortaleza.ghtml',
-                'published_parsed': [2044, 8, 14, 3, 1, 3, 2, 226, 0]
+                'published_parsed': [2044, 8, 14, 3, 1, 3, 2, 226, 0],
+                'summary': 'grupo e preso com arma e municao apos bater carro durante perseguicao na grande fortaleza'
             },
             {
                 'link': 'https://g1.globo.com/loterias/noticia/2019/08/06/mega-sena-pode-pagar-r-32-milhoes-nesta-terca.ghtml',
-                'published_parsed': [2019, 8, 14, 3, 1, 3, 2, 226, 0]
+                'published_parsed': [2022, 8, 14, 3, 1, 3, 2, 226, 0],
+                'summary': 'mega sena pode pagar r 32 milhoes nesta terca'
             },
             {
                 'link': 'https://g1.globo.com/economia/noticia/2019/08/06/preco-medio-dos-imoveis-residenciais-ja-caiu-mais-de-2percent-em-2019-diz-fipezap.ghtml',
-                'published_parsed': [2001, 8, 14, 3, 1, 3, 2, 226, 0]
+                'published_parsed': [2001, 8, 14, 3, 1, 3, 2, 226, 0],
+                'summary': 'preco medio dos imoveis residenciais ja caiu mais de 2percent em 2019 diz fipezap'
             }
         ]
 
@@ -44,4 +47,4 @@ class TestPageFilterer:
         pages = self.filterer.filter_pages_parallel(self.pages)
         assert len(pages) == 2
         links = [page.link for page in pages]
-        assert 'https://g1.globo.com/economia/noticia/2019/08/06/preco-medio-dos-imoveis-residenciais-ja-caiu-mais-de-2percent-em-2019-diz-fipezap.ghtml' in links
+        assert 'https://g1.globo.com/economia/noticia/2019/08/06/preco-medio-dos-imoveis-residenciais-ja-caiu-mais-de-2percent-em-2019-diz-fipezap.ghtml' not in links
