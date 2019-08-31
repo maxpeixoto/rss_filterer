@@ -1,5 +1,6 @@
 class KeywordReader:
     _file = "keywords.txt"
+
     @staticmethod
     def read():
         with open(KeywordReader._file) as keywords:

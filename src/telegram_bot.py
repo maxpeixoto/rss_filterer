@@ -7,6 +7,7 @@ from page_reference import PageReference
 class TelegramBot:
     TOKEN = ""
     CHAT_ID = ""
+
     @staticmethod
     def send(msg):
         if type(msg) is PageReference:

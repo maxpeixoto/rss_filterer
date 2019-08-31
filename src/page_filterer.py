@@ -10,8 +10,8 @@ class PageFilterer:
         self._rss = rss
         config = RssConfiguration(rss)
         self._filters = [
-            FilterKeyword(),
-            FilterNeverSent(config)
+            FilterNeverSent(config),
+            FilterKeyword()
         ]
 
     def _filter_page_thread(self, page, filtered_list):
