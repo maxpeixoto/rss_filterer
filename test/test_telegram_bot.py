@@ -1,4 +1,4 @@
-from telegram_bot import TelegramBot
+from src.telegram_bot import TelegramBot
 
 
 def test_send_msg():

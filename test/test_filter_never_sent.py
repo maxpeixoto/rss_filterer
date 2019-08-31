@@ -1,9 +1,9 @@
 from time import gmtime
 
-from filter_never_sent import FilterNeverSent
-from page_filter import PageFilter
-from page_reference import PageReference
-from rss_configuration import RssConfiguration
+from src.filter_never_sent import FilterNeverSent
+from src.page_filter import PageFilter
+from src.page_reference import PageReference
+from src.rss_configuration import RssConfiguration
 
 feedparser_dict = [
     {

@@ -1,6 +1,6 @@
-from page_filterer import PageFilterer
-from rss_parser import RssParser
-from telegram_bot import TelegramBot
+from src.page_filterer import PageFilterer
+from src.rss_parser import RssParser
+from src.telegram_bot import TelegramBot
 
 
 class TestMain:

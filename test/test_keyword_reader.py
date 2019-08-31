@@ -1,4 +1,4 @@
-from keyword_reader import KeywordReader
+from src.keyword_reader import KeywordReader
 
 
 def test_keyword_reader():

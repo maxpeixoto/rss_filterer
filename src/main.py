@@ -1,8 +1,8 @@
 import logging
 
-from rss_filterer import RssFilterer
-from rss_list import RssList
-from telegram_bot import TelegramBot
+from src.rss_filterer import RssFilterer
+from src.rss_list import RssList
+from src.telegram_bot import TelegramBot
 
 if __name__ == "__main__":
     try:

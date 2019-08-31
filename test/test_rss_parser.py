@@ -1,5 +1,5 @@
-from page_reference import PageReference
-from rss_parser import RssParser
+from src.page_reference import PageReference
+from src.rss_parser import RssParser
 
 
 class TestRssParser:

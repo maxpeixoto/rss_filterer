@@ -1,8 +1,8 @@
 import pytest
 
-from page_filter import PageFilter
-from page_filterer import PageFilterer
-from page_reference import PageReference
+from src.page_filter import PageFilter
+from src.page_filterer import PageFilterer
+from src.page_reference import PageReference
 
 
 class TestPageFilterer:

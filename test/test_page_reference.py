@@ -1,4 +1,4 @@
-from page_reference import PageReference
+from src.page_reference import PageReference
 
 
 class TestPageReference:

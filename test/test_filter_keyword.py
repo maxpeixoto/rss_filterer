@@ -1,7 +1,7 @@
 import pytest
 
-from filter_keyword import FilterKeyword
-from page_reference import PageReference
+from src.filter_keyword import FilterKeyword
+from src.page_reference import PageReference
 
 
 class TestFilterKeyword:

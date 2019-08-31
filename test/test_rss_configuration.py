@@ -4,8 +4,8 @@ import time
 
 import pytest
 
-from rss_config_io import RssConfigIO
-from rss_configuration import RssConfiguration
+from src.rss_config_io import RssConfigIO
+from src.rss_configuration import RssConfiguration
 
 
 class TestRssConfiguration:

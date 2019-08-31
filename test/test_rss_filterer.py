@@ -1,6 +1,6 @@
 import pytest
 
-from rss_filterer import RssFilterer
+from src.rss_filterer import RssFilterer
 
 
 class TestRssFilterer:

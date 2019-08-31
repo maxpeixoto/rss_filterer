@@ -1,7 +1,7 @@
 import logging
 from urllib import request
 
-from page_reference import PageReference
+from src.page_reference import PageReference
 
 
 class TelegramBot:

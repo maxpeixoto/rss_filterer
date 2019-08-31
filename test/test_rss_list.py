@@ -1,4 +1,4 @@
-from rss_list import RssList
+from src.rss_list import RssList
 
 
 class TestRssList:

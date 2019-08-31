@@ -1,8 +1,8 @@
 from threading import Thread
 
-from filter_keyword import FilterKeyword
-from filter_never_sent import FilterNeverSent
-from rss_configuration import RssConfiguration
+from src.filter_keyword import FilterKeyword
+from src.filter_never_sent import FilterNeverSent
+from src.rss_configuration import RssConfiguration
 
 
 class PageFilterer:

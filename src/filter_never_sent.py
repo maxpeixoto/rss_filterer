@@ -1,4 +1,4 @@
-from page_filter import PageFilter
+from src.page_filter import PageFilter
 
 
 class FilterNeverSent(PageFilter):

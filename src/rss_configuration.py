@@ -1,6 +1,6 @@
 from time import gmtime
 
-from rss_config_io import RssConfigIO
+from src.rss_config_io import RssConfigIO
 
 
 class RssConfiguration:

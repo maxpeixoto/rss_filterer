@@ -3,7 +3,7 @@ import random
 
 import pytest
 
-from rss_config_io import RssConfigIO
+from src.rss_config_io import RssConfigIO
 
 
 class TestRssConfigIO:
