@@ -18,4 +18,7 @@ class RssFilterer:
         return self
 
     def send_links(self):
+        amount = len(self._pages)
+        # if amount:
+        print('sending %d links from %s to Telegram' % (amount, self._rss))
         [TelegramBot.send(page) for page in self._pages]

@@ -1,4 +1,6 @@
-from time import gmtime
+from time import gmtime, sleep
+
+import pytest
 
 from src.filter_never_sent import FilterNeverSent
 from src.page_filter import PageFilter
@@ -24,8 +26,14 @@ feedparser_dict = [
 class TestFilterNeverSent:
     pages = [PageReference(i) for i in feedparser_dict]
     rss = 'http://g1.globo.com/dynamo/rss2.xml'
-    config = RssConfiguration(rss)
-    my_filter = FilterNeverSent(config)
+
+    @pytest.fixture(autouse=True)
+    def before_any(self):
+        c = RssConfiguration(self.rss).set_timestamp(list(gmtime()))
+
+        del c
+        self.config = RssConfiguration(self.rss)
+        self.my_filter = FilterNeverSent(self.config)
 
     def test_init(self):
         assert type(self.my_filter._threshold) is list
@@ -38,6 +46,7 @@ class TestFilterNeverSent:
         assert issubclass(child_type, PageFilter)
 
     def test_threshold(self):
+        sleep(1)
         assert list(gmtime()) > self.my_filter._threshold
 
     def test_filter_update_timestamp(self):

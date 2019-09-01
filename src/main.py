@@ -15,8 +15,5 @@ if __name__ == "__main__":
         """"
         Known issues:
         Busca nao pega non ASC characters
-        Busca em propagandas, nao so no texto principal
-        Nao da pra instalar
-        Apenas mostra links como resultado
         nao loga em arquivo
         """
